@@ -2,7 +2,8 @@
 
 echo "[Info] Start to run terraform plan"
 
-echo "[Debug] list files"
+echo "[Debug] list files under /sharedfolder/infoblox-workspace"
+cd /sharedfolder/infoblox-workspace
 ls -ail && pwd
 
 echo "[Debug] ~/.terraform.d/plugins"
