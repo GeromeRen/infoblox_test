@@ -29,14 +29,17 @@ cp /sharedfolder/infoblox-workspace/.terraformrc ~/.terraformrc
 echo "[Debug] 5. List files under home"
 ls -ail ~
 
-#echo "[Debug] Start to run terraform init"
-#terraform init -plugin-dir "$HOME/.terraform.d/plugins/" -get-plugins=false -backend-config="storage_account_name=sa5064iactf"
+echo "[Debug] Start to run terraform init"
 terraform init \
   -plugin-dir "$HOME/.terraform.d/plugins/" \
   -get-plugins=false \
   -backend-config="storage_account_name=sa5064iactf" \
   -backend-config="container_name=$AZURERM_BACKEND_STORAGE_CONTAINER" \
   -backend-config="key=$AZURERM_BACKEND_STORAGE_CONTAINER_BLOB_KEY"
+
+echo "[Debug] Start to run terraform workspace"
+terraform workspace select ${CLOUD_ENV_NAME} || terraform workspace new ${CLOUD_ENV_NAME}
+terraform workspace list -no-color 
 
 echo "[Debug] 6. Start to list terraform providers"
 ls -ail .terraform/plugins/linux_amd64
