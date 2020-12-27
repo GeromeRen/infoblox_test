@@ -44,7 +44,7 @@ terraform providers
 
 echo "[Debug] 7. Start to run terraform plan"
 
-terraform plan -input=false -var "infoblox_username=$IPAM_ID"  -var "infoblox_password=$IPAM_PWD" -out "infoblox_tfplan.tfplan" -var-file="cloud-$CLOUD_ENV_NAME"
+terraform plan -input=false -var "infoblox_username=$IPAM_ID"  -var "infoblox_password=$IPAM_PWD" -out "infoblox_tfplan.tfplan" -var-file="cloud-${CLOUD_ENV_NAME}.tfvars"
 
 echo "[Debug] 8. List current folder after running terraform plan"
 ls -ail && pwd
