@@ -25,7 +25,7 @@ printenv | grep IPAM_PWD
 
 #echo "[Debug] Start to run terraform init"
 #terraform init -plugin-dir "$HOME/.terraform.d/plugins/" -get-plugins=false -backend-config="storage_account_name=sa5064iactf"
-terraform plan \
+terraform init \
   -plugin-dir "$HOME/.terraform.d/plugins/" \
   -get-plugins=false \
   -backend-config="storage_account_name=sa5064iactf" \
@@ -38,11 +38,7 @@ terraform providers
 
 echo "[Debug] Start to run terraform plan"
 
-if [[ -z "${CMDARGS_TFVARS}" ]]; then
-  terraform plan -input=false -var "infoblox_username=$IPAM_ID"  -var "infoblox_password=$IPAM_PWD" -out "infoblox_tfplan.tfplan" ${CMDARGS_TFVARS}
-else
-  terraform plan -input=false -var "infoblox_username=$IPAM_ID"  -var "infoblox_password=$IPAM_PWD" -out "infoblox_tfplan.tfplan" 
-fi
+terraform plan -input=false -var "infoblox_username=$IPAM_ID"  -var "infoblox_password=$IPAM_PWD" -out "infoblox_tfplan.tfplan" -var-file="cloud-$CLOUD_ENV_NAME"
 
 echo "[Debug] List current folder after running terraform plan"
 ls -ail && pwd
