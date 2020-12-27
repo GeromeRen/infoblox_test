@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[Info] ############# Start to run terraform plan #############"
+echo "[Info] ############# Begin terraform plan #############"
 
 echo "[Debug] 1. Print Environment Variables:"
 echo "[Debug] environment variable IPAM_ID"
@@ -58,3 +58,5 @@ cp infoblox_tfplan.json /sharedfolder/infoblox-workspace/infoblox_tfplan.json
 
 echo "[Debug] 10. List sharedfolder folder after copying infoblox_tfplan.json to /sharedfolder"
 ls /sharedfolder/infoblox-workspace
+
+echo "[Info] ############# End terraform plan #############"
