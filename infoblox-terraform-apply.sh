@@ -50,7 +50,7 @@ echo "[Debug] 9. Start to run terraform plan"
 terraform plan -input=false -var "infoblox_username=$IPAM_ID"  -var "infoblox_password=$IPAM_PWD" -out "infoblox_tfplan.tfplan" -var-file="cloud-${CLOUD_ENV_NAME}.tfvars"
 
 echo "[Debug] 10. Start to run terraform apply"
-terraform apply -auto-approve -lock=true -lock-timeout=10m -input=false -no-color ./infoblox_tfplan.tfplan
+#terraform apply -auto-approve -lock=true -lock-timeout=10m -input=false -no-color ./infoblox_tfplan.tfplan
 
 echo "[Debug] 11. List current folder after running terraform plan"
 ls -ail && pwd
